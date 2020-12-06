@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ request.user.username }}
+{% endblock title %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+<div class=row>
+<div class="card col-4" style="width: 18rem; display: block;">
+  <img src="{{ request.user.profile.profile_picture.url }}" class="card-img-top" alt="Фото">
+  <div class="card-body">
+    <h5 class="card-title">Пользователь: {{ request.user.username }}</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Фамилия: {{ request.user.profile.last_name }}</li>
+    <li class="list-group-item">Имя: {{ request.user.profile.first_name }}</li>
+    <li class="list-group-item">Отчество: {{ request.user.profile.patronymic }}</li>
+    <li class="list-group-item">О себе: {{ request.user.profile.bio }}</li>
+  </ul>
+  <div class="card-body">
+    <a href="{% url 'profile_form' pk=user.profile.pk %}" class="card-link">Редактировать</a>
+  </div>
+</div>
+
+<div class="myform col-6" style="width: 18rem; display: block;">
+{% block form %}
+{% endblock form %}
+</div>
+</div>
+{% endblock content %}
+

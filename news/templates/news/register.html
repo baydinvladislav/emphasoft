@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Регистрация пользователя
+{% endblock title %}
+
+{% block sidebar %}
+{% include 'inc/_sidebar.html' %}
+{% endblock sidebar %}
+
+{% block content %}
+
+<h1>Регистрация пользователя</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary btn-block">Регистрация</button>
+</form>
+
+<ul>
+    <li><a href="{% url 'social:begin' 'github' %}">Signin With Github</a> </li>
+</ul>
+{% endblock content %}

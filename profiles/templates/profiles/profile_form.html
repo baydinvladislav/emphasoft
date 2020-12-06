@@ -1,0 +1,15 @@
+{% extends 'profiles/profile_detail.html' %}
+
+{% block title %}
+Изменить {{ request.user.username }}
+{% endblock title %}
+
+{% block form %}
+  
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">Изменить</button>
+</form
+
+{% endblock form %}
